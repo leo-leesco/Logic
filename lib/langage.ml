@@ -1,1 +1,3 @@
-type 'a langage = 'a list
+type 'a langage = 'a Seq.t
+
+
