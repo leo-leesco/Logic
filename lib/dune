@@ -1,2 +1,4 @@
 (library
- (name logic))
+ (name logic)
+ (modules langage calculPropositionnel)
+ (package logic))
