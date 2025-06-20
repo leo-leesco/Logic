@@ -1,2 +1,5 @@
-(test
- (name test_logic))
+(tests
+ (names test_langage)
+(libraries logic)
+ (flags
+  (:standard -warn-error -a)))
