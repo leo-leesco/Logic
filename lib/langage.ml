@@ -50,12 +50,12 @@ module Propositionnel = struct
     function
     | Var _ as f -> f
     | And (f, g) -> And (to_cnf f, to_cnf g)
-    | Implies (f, g) -> And (to_cnf (Not f), to_cnf g)
+    | Implies (f, g) -> to_cnf (Or (Not f, g))
     | Equiv (f, g) -> And (to_cnf (Implies (f, g)), to_cnf (Implies (g, f)))
     | Not p -> (
         match p with
         | Var _ as f -> Not f
-        | Not _ -> to_cnf p
+        | Not f -> to_cnf f
         | And (f, g) -> to_cnf (Or (Not f, Not g))
         | Or (f, g) -> And (to_cnf (Not f), to_cnf (Not g))
         | Implies (f, g) -> And (to_cnf f, to_cnf (Not g))
